@@ -265,7 +265,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
   },
   decorationCircleSmall: {
-    width: 60,
+    width: 70,
     height: 60,
     position: 'absolute',
     bottom: -30,

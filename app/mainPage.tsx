@@ -6,79 +6,11 @@ import {
   StyleSheet,
   SafeAreaView,
   StatusBar,
+  Image,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { AntDesign, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-
-const Header = ({ onProfilePress }) => (
-  <View style={styles.header}>
-    <View style={styles.titleRow}>
-      <View style={styles.logoContainer}>
-        <LinearGradient colors={['#6366F1', '#8B5CF6']} style={styles.logoBackground}>
-          <Text style={styles.logoText}>LQ</Text>
-        </LinearGradient>
-        <Text style={styles.title}>LangQuest</Text>
-      </View>
-      <TouchableOpacity style={styles.profileButton} onPress={onProfilePress}>
-        <LinearGradient colors={['#EEF2FF', '#E0E7FF']} style={styles.profileGradient}>
-          <AntDesign name="user" size={18} color="#4F46E5" />
-        </LinearGradient>
-      </TouchableOpacity>
-    </View>
-  </View>
-);
-
-const WelcomeCard = ({ onContinue }) => (
-  <LinearGradient colors={['#4F46E5', '#6366F1']} style={styles.welcomeCard}>
-    <View style={styles.welcomeContent}>
-      <Text style={styles.welcomeTitle}>Continue Losing</Text>
-      <Text style={styles.welcomeSubtitle}>Back here? again?</Text>
-      <View style={styles.progressContainer}>
-        <View style={styles.progressBar}>
-          <View style={styles.progressFill} />
-        </View>
-        <Text style={styles.progressText}>72% to next level there is no point</Text>
-      </View>
-      <TouchableOpacity style={styles.continueButton} onPress={onContinue}>
-        <Text style={styles.continueButtonText}>Continue</Text>
-        <Ionicons name="arrow-forward" size={16} color="#C7F464" />
-      </TouchableOpacity>
-    </View>
-    <View style={styles.decorationContainer}>
-      <View style={styles.decorationCircle} />
-      <View style={[styles.decorationCircle, styles.decorationCircleSmall]} />
-    </View>
-  </LinearGradient>
-);
-
-const QuickActionCard = ({ icon, title, subtitle, onPress, color, iconColor }) => (
-  <TouchableOpacity style={styles.actionCard} onPress={onPress}>
-    <View style={[styles.actionIcon, { backgroundColor: color }]}>
-      <MaterialCommunityIcons name={icon} size={22} color={iconColor} />
-    </View>
-    <Text style={styles.actionTitle}>{title}</Text>
-    <Text style={styles.actionSubtitle}>{subtitle}</Text>
-  </TouchableOpacity>
-);
-
-const NavigationBar = ({ onPlayPress, onSettingsPress }) => (
-  <View style={styles.navBar}>
-    <TouchableOpacity style={[styles.navButton, styles.activeNavButton]}>
-      <Ionicons name="home" size={30} color="#C7F464" />
-      <Text style={styles.activeNavText}>Home</Text>
-    </TouchableOpacity>
-    <TouchableOpacity style={styles.navCenterButton} onPress={onPlayPress}>
-      <LinearGradient colors={['#C7F464', '#6366F1']} style={styles.navCenterButtonGradient}>
-        <Ionicons name="play" size={24} color="white" />
-      </LinearGradient>
-    </TouchableOpacity>
-    <TouchableOpacity style={styles.navButton} onPress={onSettingsPress}>
-      <Ionicons name="settings-outline" size={22} color="#6B7280" />
-      <Text style={styles.navText}>Settings</Text>
-    </TouchableOpacity>
-  </View>
-);
 
 const MainPage = () => {
   const router = useRouter();
@@ -86,60 +18,133 @@ const MainPage = () => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" />
-      <Header onProfilePress={() => router.push('/profileScreen')} />
-      <View style={styles.content}>
-        <WelcomeCard onContinue={() => router.push('/gameScreen')} />
 
+      {/* Header */}
+      <View style={styles.header}>
+        <View style={styles.titleRow}>
+          <View style={styles.logoContainer}>
+            <LinearGradient
+              colors={['#6366F1', '#8B5CF6']}
+              style={styles.logoBackground}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}>
+              <Text style={styles.logoText}>LQ</Text>
+            </LinearGradient>
+            <Text style={styles.title}>LangQuest</Text>
+          </View>
+          <TouchableOpacity
+            style={styles.profileButton}
+            onPress={() => router.push('/profileScreen')}>
+            <LinearGradient
+             
+              colors={['#EEF2FF', '#E0E7FF']}
+              style={styles.profileGradient}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}>
+              
+              <AntDesign name="user" size={18} color="#4F46E5" />
+            </LinearGradient>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      {/* Main Content */}
+      <View style={styles.content}>
+        {/* Welcome Card */}
+        <LinearGradient
+          colors={['#4F46E5', '#6366F1']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={styles.welcomeCard}>
+          <View style={styles.welcomeContent}>
+            <Text style={styles.welcomeTitle}>Continue Losing</Text>
+            <Text style={styles.welcomeSubtitle}>Back here? again?</Text>
+
+            <View style={styles.progressContainer}>
+              <View style={styles.progressBar}>
+                <View style={styles.progressFill} />
+              </View>
+              <Text style={styles.progressText}>72% to next level there is no point</Text>
+            </View>
+
+            <TouchableOpacity
+              style={styles.continueButton}
+              onPress={() => router.push('/gameScreen')}>
+              <Text style={styles.continueButtonText}>Continue</Text>
+              <Ionicons name="arrow-forward" size={16} color="#C7F464" />
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.decorationContainer}>
+            <View style={styles.decorationCircle} />
+            <View style={[styles.decorationCircle, styles.decorationCircleSmall]} />
+          </View>
+        </LinearGradient>
+
+        {/* Quick Actions */}
         <Text style={styles.sectionTitle}>Quick Actions</Text>
         <View style={styles.actionsGrid}>
-          <QuickActionCard
-            icon="book-open-variant"
-            title="Do"
-            subtitle="does it?"
-            onPress={() => router.push('/')}
-            color="#C7F464"
-            iconColor="#4F46E5"
-          />
-          <QuickActionCard
-            icon="trophy-outline"
-            title="Do Something?"
-            subtitle="Thats a lie"
-            onPress={() => router.push('/')}
-            color="#C7F464"
-            iconColor="#D97706"
-          />
-          <QuickActionCard
-            icon="text-box-outline"
-            title="What does this do?"
-            subtitle="Could it be nothing?"
-            onPress={() => router.push('/')}
-            color="#C7F464"
-            iconColor="#059669"
-          />
-          <QuickActionCard
-            icon="account-group-outline"
-            title="Do Nothing"
-            subtitle="It's the best option"
-            onPress={() => router.push('/')}
-            color="#C7F464"
-            iconColor="#DB2777"
-          />
+          <TouchableOpacity style={styles.actionCard} onPress={() => router.push('/')}>
+            <View style={[styles.actionIcon, { backgroundColor: '#C7F464' }]}>
+              <MaterialCommunityIcons name="text-box-outline" size={40} color="#FFFFFF" />
+            </View>
+            <Text style={styles.actionTitle}>Do</Text>
+            <Text style={styles.actionSubtitle}>does it?</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.actionCard} onPress={() => router.push('/')}>
+            <View style={[styles.actionIcon, { backgroundColor: '#C7F464' }]}>
+              <MaterialCommunityIcons name="text-box-outline" size={40} color="#FFFFFF" />
+            </View>
+            <Text style={styles.actionTitle}>Do Something?</Text>
+            <Text style={styles.actionSubtitle}>Thats a lie</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.actionCard} onPress={() => router.push('/')}>
+            <View style={[styles.actionIcon, { backgroundColor: '#C7F464' }]}>
+              <MaterialCommunityIcons name="text-box-outline" size={40} color="#FFFFFF" />
+            </View>
+            <Text style={styles.actionTitle}>What does this do?</Text>
+            <Text style={styles.actionSubtitle}>Could it be nothing?</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.actionCard} onPress={() => router.push('/')}>
+            <View style={[styles.actionIcon, { backgroundColor: '#C7F464' }]}>
+              <MaterialCommunityIcons name="text-box-outline" size={40} color="#FFFFFF" />
+            </View>
+            <Text style={styles.actionTitle}>Do Nothing</Text>
+            <Text style={styles.actionSubtitle}>It's the best option</Text>
+          </TouchableOpacity>
         </View>
 
+        {/* Legal Section */}
         <TouchableOpacity style={styles.legalButton} onPress={() => router.push('/eulaScreen')}>
           <AntDesign name="infocirlceo" size={14} color="#6B7280" />
           <Text style={styles.legalText}>Terms of Service</Text>
         </TouchableOpacity>
       </View>
 
-      <NavigationBar
-        onPlayPress={() => router.push('/gameScreen')}
-        onSettingsPress={() => router.push('/optionsScreen')}
-      />
+      {/* Navigation Bar */}
+      <View style={styles.navBar}>
+        <TouchableOpacity style={[styles.navButton, styles.activeNavButton]}>
+          <Ionicons name="home" size={30} color="#C7F464" />
+          <Text style={styles.activeNavText}>Home</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.navCenterButton} onPress={() => router.push('/gameScreen')}>
+          <LinearGradient colors={['#C7F464', '#6366F1']} style={styles.navCenterButtonGradient}>
+            <Ionicons name="play" size={24} color="white" />
+          </LinearGradient>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.navButton} onPress={() => router.push('/optionsScreen')}>
+          <Ionicons name="settings-outline" size={22} color="#6B7280" />
+          <Text style={styles.navText}>Settings</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {
@@ -148,8 +153,9 @@ const styles = StyleSheet.create({
   },
   header: {
     paddingHorizontal: 20,
-    paddingTop: 16,
-    paddingBottom: 12,
+    paddingTop: 10,
+    paddingBottom: 10
+  ,
     backgroundColor: '#FFF',
   },
   titleRow: {
@@ -182,6 +188,7 @@ const styles = StyleSheet.create({
   profileButton: {
     borderRadius: 12,
     overflow: 'hidden',
+    marginRight: 80,
   },
   profileGradient: {
     padding: 10,
@@ -270,48 +277,54 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 0.15)',
   },
   sectionTitle: {
-    fontSize: 18,
-    fontWeight: '700',
-    color: '#111827',
-    marginBottom: 16,
-  },
+  fontSize: 18,
+  fontWeight: '700',
+  color: '#111827',
+  marginBottom: 12,
+  paddingHorizontal: 4,
+},
   actionsGrid: {
-  flexDirection: 'column',
+  flexDirection: 'row',
   flexWrap: 'wrap',
   justifyContent: 'flex-start', 
-  alignItems: 'flex-start',
-  gap: 5, 
+  gap: 10,                      
 },
-  actionCard: {
-    width: '20%',
-    backgroundColor: 'white',
-    borderRadius: 16,
-    padding: 16,
-    marginBottom: 16,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 3,
-    elevation: 2,
-  },
+
+actionCard: {
+  width: 100,                   
+  backgroundColor: '#FFFFFF',
+  borderRadius: 20,
+  padding: 16,
+  marginBottom: 16,
+  shadowColor: '#000',
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.08,
+  shadowRadius: 4,
+  elevation: 3,
+},
   actionIcon: {
-    width: 40,
-    height: 40,
-    borderRadius: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 12,
-  },
+  width: 44,
+  height: 44,
+  borderRadius: 12,
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginBottom: 10,
+  shadowColor: '#000',
+  shadowOffset: { width: 0, height: 1 },
+  shadowOpacity: 0.05,
+  shadowRadius: 2,
+},
   actionTitle: {
-    fontSize: 15,
-    fontWeight: '600',
-    color: '#111827',
-    marginBottom: 4,
-  },
-  actionSubtitle: {
-    fontSize: 12,
-    color: '#6B7280',
-  },
+  fontSize: 16,
+  fontWeight: '600',
+  color: '#1F2937',
+  marginBottom: 2,
+},
+actionSubtitle: {
+  fontSize: 13,
+  color: '#6B7280',
+  lineHeight: 16,
+},
   legalButton: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -324,58 +337,74 @@ const styles = StyleSheet.create({
     color: '#6B7280',
   },
   navBar: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    borderTopLeftRadius: 24,
-    borderTopRightRadius: 24,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: -2 },
-    shadowOpacity: 0.06,
-    shadowRadius: 6,
-    elevation: 5,
-  },
-  navButton: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 4,
-    flex: 1,
-  },
-  activeNavButton: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  navText: {
-    marginTop: 2,
-    fontSize: 11,
-    color: '#6B7280',
-  },
-  activeNavText: {
-    marginTop: 2,
-    fontSize: 11,
-    fontWeight: '600',
-    color: '#4F46E5',
-  },
-  navCenterButton: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: -28,
-  },
-  navCenterButtonGradient: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowColor: '#4F46E5',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 8,
-    elevation: 6,
-  },
+  position: 'absolute',
+  top: 0,
+  right: 0,
+  height: '100%',
+  width: 80,
+  backgroundColor: 'white',
+  paddingVertical: 32,
+  paddingHorizontal: 8,
+  borderTopLeftRadius: 24,
+  borderBottomLeftRadius: 24,
+  shadowColor: '#000',
+  shadowOffset: { width: -2, height: 0 },
+  shadowOpacity: 0.06,
+  shadowRadius: 6,
+  elevation: 5,
+  flexDirection: 'column',
+  justifyContent: 'space-between', 
+  alignItems: 'center',
+},
+
+navButton: {
+  alignItems: 'center',
+  justifyContent: 'center',
+  paddingVertical: 12,
+  flex: 0,  // don't stretch buttons vertically
+  width: '100%',
+},
+
+activeNavButton: {
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: '#E0E7FF',  // optional highlight background
+  borderRadius: 12,
+},
+
+navText: {
+  marginTop: 4,
+  fontSize: 11,
+  color: '#6B7280',
+},
+
+activeNavText: {
+  marginTop: 4,
+  fontSize: 11,
+  fontWeight: '600',
+  color: '#4F46E5',
+},
+
+navCenterButton: {
+  marginTop: 24,
+  width: 56,
+  height: 56,
+  borderRadius: 28,
+  overflow: 'hidden',
+  alignItems: 'center',
+  justifyContent: 'center',
+},
+
+navCenterButtonGradient: {
+  flex: 1,
+  alignItems: 'center',
+  justifyContent: 'center',
+  shadowColor: '#4F46E5',
+  shadowOffset: { width: 0, height: 4 },
+  shadowOpacity: 0.3,
+  shadowRadius: 8,
+  elevation: 6,
+},
 });
 
 export default MainPage;

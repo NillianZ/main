@@ -11,13 +11,10 @@ const eulaScreen = () => {
       <ScrollView style={styles.eulaText}>
         {/* Ensure the content is inside the Text component */}
         <Text style={styles.eulaContent}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et
-          dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.
-          Maecenas nisl est, ultrices nec congue eget, auctor vitae massa.
+          We're well aware noone reads these so have a funny picture instead.
+          Picture not included.
           {'\n\n'}
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et
-          dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.
-          Maecenas nisl est, ultrices nec congue eget, auctor vitae massa.
+          Oh and please don't sue.
           {'\n\n'}
         </Text>
       </ScrollView>

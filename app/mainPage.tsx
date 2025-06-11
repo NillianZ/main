@@ -19,34 +19,7 @@ const MainPage = () => {
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" />
 
-      {/* Header */}
-      <View style={styles.header}>
-        <View style={styles.titleRow}>
-          <View style={styles.logoContainer}>
-            <LinearGradient
-              colors={['#6366F1', '#8B5CF6']}
-              style={styles.logoBackground}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}>
-              <Text style={styles.logoText}>LQ</Text>
-            </LinearGradient>
-            <Text style={styles.title}>LangQuest</Text>
-          </View>
-          <TouchableOpacity
-            style={styles.profileButton}
-            onPress={() => router.push('/profileScreen')}>
-            <LinearGradient
-             
-              colors={['#EEF2FF', '#E0E7FF']}
-              style={styles.profileGradient}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}>
-              
-              <AntDesign name="user" size={18} color="#4F46E5" />
-            </LinearGradient>
-          </TouchableOpacity>
-        </View>
-      </View>
+      
 
       {/* Main Content */}
       <View style={styles.content}>
@@ -76,8 +49,7 @@ const MainPage = () => {
           </View>
 
           <View style={styles.decorationContainer}>
-            <View style={styles.decorationCircle} />
-            <View style={[styles.decorationCircle, styles.decorationCircleSmall]} />
+            
           </View>
         </LinearGradient>
 
@@ -126,10 +98,7 @@ const MainPage = () => {
 
       {/* Navigation Bar */}
       <View style={styles.navBar}>
-        <TouchableOpacity style={[styles.navButton, styles.activeNavButton]}>
-          <Ionicons name="home" size={30} color="#C7F464" />
-          <Text style={styles.activeNavText}>Home</Text>
-        </TouchableOpacity>
+        
 
         <TouchableOpacity style={styles.navCenterButton} onPress={() => router.push('/gameScreen')}>
           <LinearGradient colors={['#C7F464', '#6366F1']} style={styles.navCenterButtonGradient}>
@@ -200,11 +169,23 @@ const styles = StyleSheet.create({
     paddingTop: 24,
   },
   welcomeCard: {
-    borderRadius: 24,
-    padding: 20,
+
+     position: 'absolute',
+  bottom: 40, 
+  alignSelf: 'center',
+  width: '85%', 
+  borderRadius: 20,
+  padding: 20,
+  elevation: 5, 
+  shadowColor: '#000',
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.2,
+  shadowRadius: 4,
+    
+    
     marginBottom: 30,
     overflow: 'hidden',
-    position: 'relative',
+    
   },
   welcomeContent: {
     zIndex: 2,
@@ -262,20 +243,7 @@ const styles = StyleSheet.create({
     right: -20,
     zIndex: 1,
   },
-  decorationCircle: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-  },
-  decorationCircleSmall: {
-    width: 60,
-    height: 60,
-    position: 'absolute',
-    bottom: -30,
-    left: -40,
-    backgroundColor: 'rgba(255, 255, 255, 0.15)',
-  },
+  
   sectionTitle: {
   fontSize: 18,
   fontWeight: '700',

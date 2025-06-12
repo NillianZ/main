@@ -48,15 +48,13 @@ const MainPage = () => {
             </TouchableOpacity>
           </View>
 
-          <View style={styles.decorationContainer}>
-            
-          </View>
+          
         </LinearGradient>
 
         {/* Quick Actions */}
-        <Text style={styles.sectionTitle}>Quick Actions</Text>
+        
         <View style={styles.actionsGrid}>
-          <TouchableOpacity style={styles.actionCard} onPress={() => router.push('/')}>
+          <TouchableOpacity style={styles.actionCard} onPress={() => router.push('/profileScreen')}>
             <View style={[styles.actionIcon, { backgroundColor: '#C7F464' }]}>
               <MaterialCommunityIcons name="text-box-outline" size={40} color="#FFFFFF" />
             </View>
@@ -243,7 +241,20 @@ const styles = StyleSheet.create({
     right: -20,
     zIndex: 1,
   },
-  
+  decorationCircle: {
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+  },
+  decorationCircleSmall: {
+    width: 60,
+    height: 60,
+    position: 'absolute',
+    bottom: -30,
+    left: -40,
+    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+  },
   sectionTitle: {
   fontSize: 18,
   fontWeight: '700',

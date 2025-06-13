@@ -1,42 +1,37 @@
-This is a humorous and surrealist quiz app built with React Native and Expo Router. The app presents users with a series of multiple-choice and open-ended questions that range from absurd to oddly insightful. Many questions are illustrated with quirky or meme-like images to enhance the entertainment factor.
+This application is a straightforward program centered around a sign-in function that manages user authentication. While some planned features and options are still in progress, the app already includes several mini-games designed to pass the time and offer lighthearted humor.
 
-Features
-Multiple Question Types:
-Supports both:
+One of the featured games is a Tap Game, which challenges players to click as quickly as possible within a 10-second time frame. This fast-paced game tracks the player’s score and maintains a high score to encourage repeated play and improvement.
 
-Multiple-choice questions with image options.
+In addition to the Tap Game, the app includes a small quiz designed primarily for humorous entertainment rather than serious testing.
 
-Open-ended questions that require typed responses.
+Furthermore, the app offers a button that directs users to an external website, leading to another clicking game for comparison and additional amusement.
 
-Custom Content:
-All questions, answers, and images are custom-curated to fit a humorous or surreal theme.
+Overall, the app blends simple user authentication with casual gameplay and light humor.
 
-Visual Quiz Cards:
-Each multiple-choice option includes a funny or confusing image to keep users guessing and engaged.
+Changelog:
 
-Answer Validation:
+Routing and Navigation Updates
 
-For multiple-choice questions, one option is marked as correct.
+Added a new screen tapGame to the router stack in app/_layout.tsx to enable navigation to the newly created mini-game screen.
 
-For open-ended questions, answers are checked against a predefined string (case-sensitive by default).
+Fixed navigation routes in app/mainPage.tsx to correctly push to the intended screens, such as replacing router.push('/') with router.push('/mainPage') for accurate routing.
 
-Expandable Design:
-Questions are stored in a centralized array, making it easy to add, remove, or edit content.
+New Features
 
-Technologies Used
-React Native with Expo Router for cross-platform mobile development.
+Introduced a “Tap Game” mini-game (app/tapGame.tsx) featuring a countdown timer, tap scoring, high score persistence using AsyncStorage, animated feedback on taps, and a styled gradient interface. This enhances user engagement by adding interactive gameplay within the app.
 
-Type-safe question structures with custom QuizQuestion types.
+Added a button in the main page (app/mainPage.tsx) that opens an external URL (https://clickclickclick.click) using React Native’s Linking.openURL() API, allowing users to visit a fun external site.
 
-Hosted images via services like Cloudinary, Reddit, and Pinterest.
+Code Quality and Cleanup
 
-Future Improvements (Optional Ideas)
-Add answer normalization for open-ended questions (e.g., case insensitivity).
+Cleaned up import statements in app/sign-in.tsx for better readability by removing unnecessary comments.
 
-fix the lifes system
+Simplified comments in components/HeaderComponent.tsx without affecting functionality.
 
-Add scoring and progress tracking.
+Refactored the sign-out logic in components/SignOutButton.tsx to fix a TypeScript typing error by removing the direct usage of signOut as an event handler, improving type safety and error handling.
 
-Add animations and sound effects.
+Dependency Management
 
-Implement a question shuffle/randomization feature.
+Updated and locked specific package versions in package.json, including fixing versions of @react-native-async-storage/async-storage, upgrading TypeScript typings for React to align with the latest React version, and bumping the expo-linear-gradient version.
+
+Regenerated package-lock.json reflecting the updated and pruned dependencies to ensure consistent and stable package installations.

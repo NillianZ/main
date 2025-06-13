@@ -11,7 +11,7 @@ import {
 import { useRouter } from 'expo-router';
 import { AntDesign, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-
+import { Linking } from 'react-native';
 const MainPage = () => {
   const router = useRouter();
 
@@ -23,33 +23,7 @@ const MainPage = () => {
 
       {/* Main Content */}
       <View style={styles.content}>
-        {/* Welcome Card */}
-        <LinearGradient
-          colors={['#4F46E5', '#6366F1']}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={styles.welcomeCard}>
-          <View style={styles.welcomeContent}>
-            <Text style={styles.welcomeTitle}>Continue Losing</Text>
-            <Text style={styles.welcomeSubtitle}>Back here? again?</Text>
-
-            <View style={styles.progressContainer}>
-              <View style={styles.progressBar}>
-                <View style={styles.progressFill} />
-              </View>
-              <Text style={styles.progressText}>72% to next level there is no point</Text>
-            </View>
-
-            <TouchableOpacity
-              style={styles.continueButton}
-              onPress={() => router.push('/gameScreen')}>
-              <Text style={styles.continueButtonText}>Continue</Text>
-              <Ionicons name="arrow-forward" size={16} color="#C7F464" />
-            </TouchableOpacity>
-          </View>
-
-          
-        </LinearGradient>
+        
 
         {/* Quick Actions */}
         
@@ -70,20 +44,30 @@ const MainPage = () => {
             
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.actionCard} onPress={() => router.push('/')}>
+          <TouchableOpacity style={styles.actionCard} onPress={() => router.push('/gameScreen')}>
             <View style={[styles.actionIcon, { backgroundColor: '#C7F464' }]}>
               <MaterialCommunityIcons name="text-box-outline" size={40} color="#FFFFFF" />
             </View>
-            <Text style={styles.actionTitle}>What does this do?</Text>
-            <Text style={styles.actionSubtitle}>Could it be nothing?</Text>
+            <Text style={styles.actionTitle}>Start Game</Text>
+            
           </TouchableOpacity>
+          
+          <TouchableOpacity
+  style={styles.actionCard}
+  onPress={() => Linking.openURL('https://clickclickclick.click/#15e2b70bb968f1376f4848ae2b1ad8dc')}
+>
+  <View style={[styles.actionIcon, { backgroundColor: '#C7F464' }]}>
+    <MaterialCommunityIcons name="text-box-outline" size={40} color="#FFFFFF" />
+  </View>
+  <Text style={styles.actionTitle}>Random Site</Text>
+</TouchableOpacity>
 
           <TouchableOpacity style={styles.actionCard} onPress={() => router.push('/')}>
             <View style={[styles.actionIcon, { backgroundColor: '#C7F464' }]}>
               <MaterialCommunityIcons name="text-box-outline" size={40} color="#FFFFFF" />
             </View>
-            <Text style={styles.actionTitle}>Do Nothing</Text>
-            <Text style={styles.actionSubtitle}>It's the best option</Text>
+            <Text style={styles.actionTitle}>Reload Page</Text>
+            
           </TouchableOpacity>
         </View>
 
@@ -93,22 +77,12 @@ const MainPage = () => {
           <Text style={styles.legalText}>Terms of Service</Text>
         </TouchableOpacity>
       </View>
-
-      {/* Navigation Bar */}
-      <View style={styles.navBar}>
-        
-
-        <TouchableOpacity style={styles.navCenterButton} onPress={() => router.push('/gameScreen')}>
-          <LinearGradient colors={['#C7F464', '#6366F1']} style={styles.navCenterButtonGradient}>
-            <Ionicons name="play" size={24} color="white" />
-          </LinearGradient>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.navButton} onPress={() => router.push('/optionsScreen')}>
-          <Ionicons name="settings-outline" size={22} color="#6B7280" />
-          <Text style={styles.navText}>Settings</Text>
-        </TouchableOpacity>
-      </View>
+      
+      <Image
+  source={{ uri: 'https://www.itl.cat/pngfile/big/51-515747_download-ultra-wide-desktop-background.jpg' }} // replace with your actual image URL
+  style={styles.bottomImage}
+/>
+      
     </SafeAreaView>
   );
 };
@@ -118,6 +92,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#C7F464',
   },
+  bottomImage: {
+  position: 'absolute',
+  bottom: -100,
+  left: 0,
+  right: 0,
+  width: '100%',
+  height: 630, // adjust to fit your image
+  resizeMode: 'contain',
+},
   header: {
     paddingHorizontal: 20,
     paddingTop: 10,
@@ -166,102 +149,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 24,
   },
-  welcomeCard: {
-
-     position: 'absolute',
-  bottom: 40, 
-  alignSelf: 'center',
-  width: '85%', 
-  borderRadius: 20,
-  padding: 20,
-  elevation: 5, 
-  shadowColor: '#000',
-  shadowOffset: { width: 0, height: 2 },
-  shadowOpacity: 0.2,
-  shadowRadius: 4,
-    
-    
-    marginBottom: 30,
-    overflow: 'hidden',
-    
-  },
-  welcomeContent: {
-    zIndex: 2,
-  },
-  welcomeTitle: {
-    fontSize: 22,
-    fontWeight: '700',
-    color: 'white',
-    marginBottom: 8,
-  },
-  welcomeSubtitle: {
-    fontSize: 14,
-    color: 'rgba(255, 255, 255, 0.8)',
-    marginBottom: 24,
-  },
-  progressContainer: {
-    marginBottom: 20,
-  },
-  progressBar: {
-    height: 8,
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    borderRadius: 4,
-    marginBottom: 8,
-    overflow: 'hidden',
-  },
-  progressFill: {
-    width: '72%',
-    height: '100%',
-    backgroundColor: 'white',
-    borderRadius: 4,
-  },
-  progressText: {
-    fontSize: 12,
-    color: 'rgba(255, 255, 255, 0.8)',
-  },
-  continueButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'white',
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    borderRadius: 12,
-    alignSelf: 'flex-start',
-    gap: 8,
-  },
-  continueButtonText: {
-    fontSize: 14,
-    fontWeight: '600',
-    color: '#C7F464',
-  },
-  decorationContainer: {
-    position: 'absolute',
-    top: -20,
-    right: -20,
-    zIndex: 1,
-  },
-  decorationCircle: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-  },
-  decorationCircleSmall: {
-    width: 60,
-    height: 60,
-    position: 'absolute',
-    bottom: -30,
-    left: -40,
-    backgroundColor: 'rgba(255, 255, 255, 0.15)',
-  },
-  sectionTitle: {
-  fontSize: 18,
-  fontWeight: '700',
-  color: '#111827',
-  marginBottom: 12,
-  paddingHorizontal: 4,
-},
+  
   actionsGrid: {
   flexDirection: 'row',
   flexWrap: 'wrap',
@@ -314,76 +202,9 @@ actionSubtitle: {
   legalText: {
     fontSize: 13,
     color: '#6B7280',
-  },
-  navBar: {
-  position: 'absolute',
-  top: 0,
-  right: 0,
-  height: '100%',
-  width: 80,
-  backgroundColor: 'white',
-  paddingVertical: 32,
-  paddingHorizontal: 8,
-  borderTopLeftRadius: 24,
-  borderBottomLeftRadius: 24,
-  shadowColor: '#000',
-  shadowOffset: { width: -2, height: 0 },
-  shadowOpacity: 0.06,
-  shadowRadius: 6,
-  elevation: 5,
-  flexDirection: 'column',
-  justifyContent: 'space-between', 
-  alignItems: 'center',
+  
 },
 
-navButton: {
-  alignItems: 'center',
-  justifyContent: 'center',
-  paddingVertical: 12,
-  flex: 0,  // don't stretch buttons vertically
-  width: '100%',
-},
-
-activeNavButton: {
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: '#E0E7FF',  // optional highlight background
-  borderRadius: 12,
-},
-
-navText: {
-  marginTop: 4,
-  fontSize: 11,
-  color: '#6B7280',
-},
-
-activeNavText: {
-  marginTop: 4,
-  fontSize: 11,
-  fontWeight: '600',
-  color: '#4F46E5',
-},
-
-navCenterButton: {
-  marginTop: 24,
-  width: 56,
-  height: 56,
-  borderRadius: 28,
-  overflow: 'hidden',
-  alignItems: 'center',
-  justifyContent: 'center',
-},
-
-navCenterButtonGradient: {
-  flex: 1,
-  alignItems: 'center',
-  justifyContent: 'center',
-  shadowColor: '#4F46E5',
-  shadowOffset: { width: 0, height: 4 },
-  shadowOpacity: 0.3,
-  shadowRadius: 8,
-  elevation: 6,
-},
 });
 
 export default MainPage;

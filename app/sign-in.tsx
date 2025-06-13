@@ -10,7 +10,7 @@ import {
   SafeAreaView,
   StatusBar,
   Image,
-  Platform, // <- import Platform here
+  Platform, 
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
@@ -50,7 +50,7 @@ export default function Page() {
       if (createdSessionId) {
         setActive!({ session: createdSessionId });
       } else {
-        // Handle case where no session is created
+        
       }
     } catch (err) {
       console.error(JSON.stringify(err, null, 2));

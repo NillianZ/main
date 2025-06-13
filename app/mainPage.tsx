@@ -52,6 +52,14 @@ const MainPage = () => {
             
           </TouchableOpacity>
           
+          <TouchableOpacity style={styles.actionCard} onPress={() => router.push('/tapGame')}>
+            <View style={[styles.actionIcon, { backgroundColor: '#C7F464' }]}>
+              <MaterialCommunityIcons name="text-box-outline" size={40} color="#FFFFFF" />
+            </View>
+            <Text style={styles.actionTitle}>Start Game</Text>
+            
+          </TouchableOpacity>
+          
           <TouchableOpacity
   style={styles.actionCard}
   onPress={() => Linking.openURL('https://clickclickclick.click/#15e2b70bb968f1376f4848ae2b1ad8dc')}
@@ -62,7 +70,7 @@ const MainPage = () => {
   <Text style={styles.actionTitle}>Random Site</Text>
 </TouchableOpacity>
 
-          <TouchableOpacity style={styles.actionCard} onPress={() => router.push('/')}>
+          <TouchableOpacity style={styles.actionCard} onPress={() => router.push('/mainPage')}>
             <View style={[styles.actionIcon, { backgroundColor: '#C7F464' }]}>
               <MaterialCommunityIcons name="text-box-outline" size={40} color="#FFFFFF" />
             </View>

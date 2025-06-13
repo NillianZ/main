@@ -18,7 +18,7 @@ const HeaderComponent = ({ progress, lives, onBackPress }: ProgressProps & { liv
         <ProgressBar progress={progress} />
       </View>
 
-      {/* Lives (Hearts) */}
+      {/* Lives */}
       <Image
         source={{
           uri: 'https://res.cloudinary.com/dis6tbci7/image/upload/v1742219002/heart_i9upg3.png',

@@ -22,7 +22,9 @@ export default function Layout() {
         <Stack.Screen name="mainPage" options={{ headerShown: false }} />
         <Stack.Screen name="home" options={{ headerShown: false }} />
         <Stack.Screen name="sign-in" options={{ headerShown: false }} />
+        <Stack.Screen name="tapGame" options={{ headerShown: false }} /> 
       </Stack>
     </ClerkProvider>
   );
 }
+

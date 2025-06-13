@@ -58,16 +58,16 @@ const MainPage = () => {
             <View style={[styles.actionIcon, { backgroundColor: '#C7F464' }]}>
               <MaterialCommunityIcons name="text-box-outline" size={40} color="#FFFFFF" />
             </View>
-            <Text style={styles.actionTitle}>Do</Text>
-            <Text style={styles.actionSubtitle}>does it?</Text>
+            <Text style={styles.actionTitle}>Profile</Text>
+            
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.actionCard} onPress={() => router.push('/')}>
+          <TouchableOpacity style={styles.actionCard} onPress={() => router.push('/optionsScreen')}>
             <View style={[styles.actionIcon, { backgroundColor: '#C7F464' }]}>
               <MaterialCommunityIcons name="text-box-outline" size={40} color="#FFFFFF" />
             </View>
-            <Text style={styles.actionTitle}>Do Something?</Text>
-            <Text style={styles.actionSubtitle}>Thats a lie</Text>
+            <Text style={styles.actionTitle}>Options</Text>
+            
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.actionCard} onPress={() => router.push('/')}>
